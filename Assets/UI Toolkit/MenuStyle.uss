@@ -1,0 +1,21 @@
+:root {
+}
+
+.header {
+    font-size: 60px;
+}
+
+.button {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 8px;
+    transition-duration: 0.25s;
+}

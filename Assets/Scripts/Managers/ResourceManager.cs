@@ -68,7 +68,7 @@ public class ResourceManager : MonoBehaviour
     {
         gold += amount;
         OnGoldChanged?.Invoke(gold);
-        Debug.Log($"Gold: {gold}");
+        
     }
 
     //Call when spending cold
@@ -125,7 +125,7 @@ public class ResourceManager : MonoBehaviour
             OnResourceChanged?.Invoke(cost.resourceType, GetResource(cost.resourceType));
         }
 
-        Debug.Log($"Consumed resources for {recipe.itemName}");
+        
         return true;
     }
 
