@@ -32,7 +32,8 @@ public class MenuScript : MonoBehaviour
         ironLabel = root.Q<Label>("IronLabel");
         oilLabel = root.Q<Label>("OilLabel");
     }
-
+   //test
+    /// <param name="evt"></param>
     private void CallPlaceBuilding(ClickEvent evt)
     {
       //  resButton.UnregisterCallback<ClickEvent>(CallPlaceBuilding);
