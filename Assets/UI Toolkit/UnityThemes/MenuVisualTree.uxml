@@ -1,8 +1,25 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MenuStyle.uss?fileID=7433441132597879392&amp;guid=537344a85c8fad7478af7c3dac411dba&amp;type=3#MenuStyle" />
-    <ui:VisualElement name="Container" style="flex-grow: 1; width: 400px; height: 800px; background-image: url(&quot;project://database/Assets/SimplePixelUI/artwork/gray/rounded/Background_GB_rounded.png?fileID=2800000&amp;guid=d3c0f49491ca1984db8f070190a53b2a&amp;type=3#Background_GB_rounded&quot;); right: 0; left: 20px; padding-left: 0;">
-        <ui:Label text="Buildings" name="Label" class="header" style="top: 20px; align-items: center; align-self: center;" />
-        <ui:Button text="MainBuidling" selectable="false" focusable="false" name="MainButton" class="button" style="top: 250px; left: auto; right: 20px; transition-property: all;" />
-        <ui:Button text="ResourceBuilding" name="ResButton" focusable="false" class="button" style="position: absolute; top: 250px; left: 20px;" />
+    <ui:VisualElement name="Top" style="align-content: stretch; top: 0; left: 0; position: absolute; right: 0; bottom: 0;">
+        <ui:VisualElement name="Topbar" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/SimplePixelUI/artwork/gray/rounded/Background_GB_rounded.png?fileID=2800000&amp;guid=d3c0f49491ca1984db8f070190a53b2a&amp;type=3#Background_GB_rounded&quot;); position: relative; width: 50%; height: 90px; align-self: center; flex-shrink: 0; flex-direction: row; align-items: auto; justify-content: flex-start; top: 10px; align-content: flex-start;">
+            <ui:Label name="GoldLabel" text="Gold:" class="toplabel" />
+            <ui:Label text="Wood:" name="WoodLabel" emoji-fallback-support="false" enabled="true" class="toplabel" />
+            <ui:Label text="Stone:" name="StoneLabel" emoji-fallback-support="false" enabled="true" class="toplabel" />
+            <ui:Label text="Gold:" name="GoldLabel" emoji-fallback-support="false" enabled="true" class="toplabel" />
+            <ui:Label text="Oil:" name="OilLabel" class="toplabel" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Sides" style="flex-grow: 1; position: relative; flex-direction: row;">
+        <ui:VisualElement name="SidebarLeft" class="sidebar" style="flex-grow: 1; flex-direction: column; width: auto; background-image: url(&quot;project://database/Assets/SimplePixelUI/artwork/gray/rounded/Background_GB_rounded.png?fileID=2800000&amp;guid=d3c0f49491ca1984db8f070190a53b2a&amp;type=3#Background_GB_rounded&quot;); left: 20px;">
+            <ui:Label text="Buildings" name="Label" class="header" style="top: 20px; align-items: center; align-self: center;" />
+            <ui:Button text="MainBuidling" selectable="false" focusable="false" name="MainButton" class="button" style="top: 250px; left: auto; right: 20px; transition-property: all; position: absolute;" />
+            <ui:Button text="ResourceBuilding" name="ResButton" focusable="false" class="button" style="position: absolute; top: 250px; left: 20px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GameArea" style="flex-grow: 1; flex-direction: column; align-self: flex-start; height: auto; width: 850px;" />
+        <ui:VisualElement name="SidebarRight" class="sidebar" style="flex-grow: 1; width: auto; background-image: url(&quot;project://database/Assets/SimplePixelUI/artwork/gray/rounded/Background_GB_rounded.png?fileID=2800000&amp;guid=d3c0f49491ca1984db8f070190a53b2a&amp;type=3#Background_GB_rounded&quot;); right: 20px;">
+            <ui:Label text="Buildings" name="Label" class="header" style="top: 20px; align-items: center; align-self: center;" />
+            <ui:Button text="MainBuidling" selectable="false" focusable="false" name="MainButton" class="button" style="top: 250px; left: auto; right: 20px; transition-property: all;" />
+            <ui:Button text="ResourceBuilding" name="ResButton" focusable="false" class="button" style="position: absolute; top: 250px; left: 20px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

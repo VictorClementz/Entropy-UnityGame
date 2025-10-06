@@ -10,6 +10,7 @@ public class ResourceManager : MonoBehaviour
     public event System.Action<int> OnGoldChanged;
     public event System.Action<ResourceType, int> OnResourceChanged;
 
+
     [Header("Current Resources")]
     public int gold = 100;
     public int wood = 0;
@@ -47,7 +48,7 @@ public class ResourceManager : MonoBehaviour
                 oil += amount;
                 break;
         }
-
+        OnResourceChanged?.Invoke(type, GetResource(type));
         Debug.Log($"Added {amount} {type}. Total: {GetResource(type)}");
     }
 

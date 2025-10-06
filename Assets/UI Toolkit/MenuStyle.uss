@@ -19,3 +19,22 @@
     border-left-width: 8px;
     transition-duration: 0.25s;
 }
+
+.sidebar {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    left: auto;
+}
+
+.toplabel {
+    flex-direction: row;
+    font-size: 30px;
+    left: 30px;
+    align-self: flex-start;
+    padding-top: 15px;
+    margin-top: 15px;
+    margin-right: 70px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+}
