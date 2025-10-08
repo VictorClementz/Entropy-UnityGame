@@ -3,8 +3,10 @@ using UnityEngine.InputSystem;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private int gridWidth = 16;
-    [SerializeField] private int gridHeight = 16;
+    public static GridManager Instance;
+
+    [SerializeField] public int gridWidth = 16;
+    [SerializeField] public int gridHeight = 16;
     [SerializeField] private GameObject tilePrefab; 
     [SerializeField] private Material defaultMaterial;
     [SerializeField] private Material selectedMaterial; 
@@ -13,6 +15,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Material[,] baseMaterials;
 
     [Header("Resource Materials")]
+    [SerializeField] private Material corruptedMaterial;
     [SerializeField] private Material woodMaterial;
     [SerializeField] private Material stoneMaterial;
     [SerializeField] private Material ironMaterial;
@@ -30,7 +33,13 @@ public class GridManager : MonoBehaviour
     // Selection state, -1 when no selection
     private Vector2Int selectedTile = new Vector2Int(-1, -1); 
     private Vector2Int hoveredTile = new Vector2Int(-1, -1);
+    private void Awake()
+    {
+        Instance = this;
+        CreateGrid();
+        CreateVisuals();
 
+    }
     void Start()
     {
         playerCamera = Camera.main;
@@ -39,8 +48,7 @@ public class GridManager : MonoBehaviour
         mouse = Mouse.current;
         keyboard = Keyboard.current;
        
-        CreateGrid();
-        CreateVisuals();
+       
     }
 
     void Update()
@@ -238,7 +246,7 @@ public class GridManager : MonoBehaviour
             UpdateTileVisual(hoveredTile.x, hoveredTile.y);
         }
     }
-    void UpdateTileVisual(int x, int y)
+   public void UpdateTileVisual(int x, int y)
     {
         if (!IsValidTile(x, y)) return;
 
@@ -252,6 +260,10 @@ public class GridManager : MonoBehaviour
         else if (hoveredTile.x == x && hoveredTile.y == y)
         {
             renderer.material = hoverMaterial;
+        }
+        else if (GetCell(x, y).isCorrupted)
+        {
+            renderer.material = corruptedMaterial;
         }
         else
         {
