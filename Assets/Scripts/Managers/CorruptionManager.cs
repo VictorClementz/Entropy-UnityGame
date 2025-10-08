@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class CorruptionManager : MonoBehaviour
 {
@@ -7,7 +8,10 @@ public class CorruptionManager : MonoBehaviour
 
     [Header("Corruption Settings")]
     [SerializeField] private float corruptionTickInterval = 3f;
-    [SerializeField] private float corruptionSpeedMultiplier = 1.1f;
+    [SerializeField] private float corruptionSpeedMultiplier = 1.1f; //Speed of global spread
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float spreadChance = 0.7f; //Start at 70% spread chance
 
     private GridManager gridManager;
     private float tickTimer;
@@ -79,12 +83,21 @@ public class CorruptionManager : MonoBehaviour
 
         foreach (var cell in cellsToSpreadFrom)
         {
-            List<(int x, int y)> neighbors = GetNeighbors(cell.x, cell.y);
+            if (Random.value > spreadChance) continue;
 
-            if (neighbors.Count > 0)
+            List<(int x, int y)> neighbors = GetNeighbors(cell.x, cell.y);
+            if (neighbors.Count == 0) continue;
+
+            
+            int maxSpread = neighbors.Count;
+            int spreadsThisTick = Random.Range(1, maxSpread + 1); //1 to 4 neghbours affected
+
+            //Random order
+            neighbors = neighbors.OrderBy(x => Random.value).ToList();
+
+            for (int i = 0; i < spreadsThisTick; i++)
             {
-                var targetCell = neighbors[Random.Range(0, neighbors.Count)];
-                CorruptCell(targetCell.x, targetCell.y);
+                CorruptCell(neighbors[i].x, neighbors[i].y);
             }
         }
     }
