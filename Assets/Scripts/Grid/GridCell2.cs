@@ -12,6 +12,8 @@ public class GridCell2
     public bool isOccupied;
     public GameObject building;
     public ResourceType resourceType;
+    public bool isCorrupted;
+    public float corruptionLevel;
 
 
 
@@ -21,5 +23,6 @@ public class GridCell2
         this.y = y;
         this.isOccupied = false;
         this.resourceType = ResourceType.None;
+        this.isCorrupted = false;
     }
 }
