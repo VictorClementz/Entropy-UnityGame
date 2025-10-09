@@ -127,3 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResourceBuilding
   buildingName: 
+  cost: 50
+  producedResource: 0

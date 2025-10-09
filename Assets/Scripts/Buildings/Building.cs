@@ -7,12 +7,13 @@ public abstract class Building : MonoBehaviour
     protected GridCell2 gridCell;
 
     protected GridManager gridManager;
+    [SerializeField] public int cost;
 
 
     protected virtual void Awake()
     {
 
-        gridManager = FindAnyObjectByType<GridManager>();
+        gridManager = GridManager.Instance;
 
         if (gridManager == null)
         {

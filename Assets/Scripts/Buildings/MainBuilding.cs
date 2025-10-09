@@ -8,7 +8,7 @@ public class MainBuilding : Building
     [SerializeField] public List<ProductionRecipe> availableRecipes;
 
     public List<ProductionSlot> slots = new List<ProductionSlot>();
-
+    
     public class ProductionSlot
     {
         public ProductionRecipe recipe;

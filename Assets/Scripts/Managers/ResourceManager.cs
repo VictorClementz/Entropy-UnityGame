@@ -85,8 +85,10 @@ public class ResourceManager : MonoBehaviour
     }
 
 
-    public int GetGold() => gold;
-
+    public int GetGold()
+    {
+        return gold;
+    }
    
     public bool CanAffordRecipe(ProductionRecipe recipe)
     {

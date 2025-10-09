@@ -1,11 +1,14 @@
 using System.Collections;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class ResourceBuilding : Building
 {
     public ResourceType producedResource;
+    
     void Start()
     {
+       
         buildingName = "Resource Collector";
 
         //Do on place

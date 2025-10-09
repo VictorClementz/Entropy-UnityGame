@@ -78,6 +78,7 @@ public class CorruptionManager : MonoBehaviour
 
     void SpreadCorruption()
     {
+        Debug.Log($"Corrupted cells: {corruptedCells.Count}");
         //Precaution
         List<(int x, int y)> cellsToSpreadFrom = new List<(int x, int y)>(corruptedCells);
 
