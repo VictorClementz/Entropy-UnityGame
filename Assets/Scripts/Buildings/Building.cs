@@ -24,5 +24,22 @@ public abstract class Building : MonoBehaviour
     {
         gridCell = cell;
         Debug.Log($"{buildingName} placed at ({cell.x}, {cell.y})");
+ 
     }
+
+    void OnMouseDown()
+    {
+        Debug.Log($"Building clicked: {buildingName}"); // ADD THIS LINE
+
+        if (BuildingUIManager.Instance != null)
+        {
+            BuildingUIManager.Instance.ShowBuildingUI(this);
+        }
+        else
+        {
+            Debug.LogError("BuildingUIManager not found in scene!");
+        }
+    }
+
+    
 }

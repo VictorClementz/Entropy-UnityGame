@@ -126,7 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9686a0963ca6e44a10feafb3120bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainBuilding
-  buildingName: 
+  buildingName: MainBuilding
+  cost: 0
   productionSlots: 1
   availableRecipes:
   - {fileID: 11400000, guid: 3cc1f40fa300ee34ba84debddd34fce9, type: 2}
+  slotCost: 50
+  slotCostMultiplier: 1.5

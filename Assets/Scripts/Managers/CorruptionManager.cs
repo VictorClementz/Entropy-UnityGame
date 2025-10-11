@@ -78,7 +78,7 @@ public class CorruptionManager : MonoBehaviour
 
     void SpreadCorruption()
     {
-        Debug.Log($"Corrupted cells: {corruptedCells.Count}");
+        
         //Precaution
         List<(int x, int y)> cellsToSpreadFrom = new List<(int x, int y)>(corruptedCells);
 
@@ -125,7 +125,7 @@ public class CorruptionManager : MonoBehaviour
             GameOver();
         }
 
-        Debug.Log($"Cell ({x},{y}) corrupted!");
+       
     }
 
     List<(int x, int y)> GetNeighbors(int x, int y)

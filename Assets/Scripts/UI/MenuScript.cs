@@ -21,10 +21,13 @@ public class MenuScript : MonoBehaviour
     {
         uiDocument = GetComponent<UIDocument>();
 
+        var root = uiDocument.rootVisualElement;
+        root.pickingMode = PickingMode.Ignore;
+
         resButton = uiDocument.rootVisualElement.Q("ResButton") as Button;
         resButton.RegisterCallback<ClickEvent>(CallPlaceBuilding);
 //topbar
-        var root = uiDocument.rootVisualElement;
+        
 
         goldLabel = root.Q<Label>("GoldLabel");
         woodLabel = root.Q<Label>("WoodLabel");
