@@ -19,8 +19,8 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private BuildingPlacer buildingPlacer;
     void Awake()
     {
-        uiDocument = GetComponent<UIDocument>();
 
+        uiDocument = GetComponent<UIDocument>();
         var root = uiDocument.rootVisualElement;
         root.pickingMode = PickingMode.Ignore;
 
@@ -35,8 +35,7 @@ public class MenuScript : MonoBehaviour
         ironLabel = root.Q<Label>("IronLabel");
         oilLabel = root.Q<Label>("OilLabel");
     }
-   //test
-    /// <param name="evt"></param>
+   
     private void CallPlaceBuilding(ClickEvent evt)
     {
       //  resButton.UnregisterCallback<ClickEvent>(CallPlaceBuilding);

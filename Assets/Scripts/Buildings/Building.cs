@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class Building : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public abstract class Building : MonoBehaviour
 
     protected GridManager gridManager;
     [SerializeField] public int cost;
+    private Mouse mouse;
+    private Camera mainCamera;
 
 
     protected virtual void Awake()
@@ -17,8 +20,11 @@ public abstract class Building : MonoBehaviour
 
         if (gridManager == null)
         {
-            Debug.LogError($"GridManager not found for {gameObject.name}!");
+            
         }
+
+        mouse = Mouse.current;
+        mainCamera = Camera.main;
     }
     public virtual void OnPlaced(GridCell2 cell)
     {
@@ -27,9 +33,29 @@ public abstract class Building : MonoBehaviour
  
     }
 
-    void OnMouseDown()
+    void Update()
     {
-        Debug.Log($"Building clicked: {buildingName}"); // ADD THIS LINE
+        
+        if (mouse != null && mouse.leftButton.wasPressedThisFrame)
+        {
+            Vector2 mousePosition = mouse.position.ReadValue();
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+           
+
+                if (hit.collider.gameObject == this.gameObject)
+                {
+                    OnBuildingClicked();
+                }
+            }
+        }
+    }
+
+    void OnBuildingClicked()
+    {
+       
 
         if (BuildingUIManager.Instance != null)
         {
@@ -37,9 +63,9 @@ public abstract class Building : MonoBehaviour
         }
         else
         {
-            Debug.LogError("BuildingUIManager not found in scene!");
+         
         }
     }
 
-    
+
 }
