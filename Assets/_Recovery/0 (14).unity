@@ -17599,6 +17599,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainBuildingPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7037800852380150555, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
+      propertyPath: availableRecipes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037800852380150555, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
+      propertyPath: 'availableRecipes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f77a54eefd908c7438663588be55e1db, type: 2}
+    - target: {fileID: 7037800852380150555, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
+      propertyPath: 'availableRecipes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d5329767aa12e524daca6c07b10a5f30, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -43,21 +43,22 @@ public class MainBuildingUI : BuildingUI
 
 
         
-            prodSlot1.RegisterCallback<ClickEvent>(evt => OnProdSlot1Clicked(0));
-        prodSlot2.RegisterCallback<ClickEvent>(evt => OnProdSlot1Clicked(1));
+            prodSlot1.RegisterCallback<ClickEvent>(evt => OnProdSlotClicked(0));
+        prodSlot2.RegisterCallback<ClickEvent>(evt => OnProdSlotClicked(1));
 
         recipeButton1.RegisterCallback<ClickEvent>(evt => AddRecipeToProd(0));
         recipeButton2.RegisterCallback<ClickEvent>(evt => AddRecipeToProd(1));
         recipeButton3   .RegisterCallback<ClickEvent>(evt => AddRecipeToProd(2));
 
-
+        productionSlotButtons.Add(prodSlot1);
+        productionSlotButtons.Add(prodSlot2);
 
         productionSelectionPanel = uiDocument.rootVisualElement.Q("RecipeSelectionPanel");
 
         recipeButtonsContainer = uiDocument.rootVisualElement.Q("RecipeButtonsContainer");
         cancelRecipeBtn = uiDocument.rootVisualElement.Q<Button>("CancelRecipeBtn");
 
-
+        cancelRecipeBtn.RegisterCallback<ClickEvent>(evt => HideProductionList());
 
 
     }
@@ -81,7 +82,7 @@ public class MainBuildingUI : BuildingUI
        
     }
 
-    private void OnProdSlot1Clicked(int slotIndex)
+    private void OnProdSlotClicked(int slotIndex)
     {
         currentSlotIndex = slotIndex;
         ShowProductionList();
@@ -96,9 +97,42 @@ public class MainBuildingUI : BuildingUI
         }
     }
 
+    private void HideProductionList()
+    {
+        if (productionSelectionPanel != null)
+        {
+            productionSelectionPanel.style.display = DisplayStyle.None;
+        }
+    }
+
     private void UpdateProductionSlots(MainBuilding building)
     {
-        ;
+        if (building == null) return;
+
+        for (int i = 0; i < productionSlotButtons.Count; i++)
+        {
+            if (i < building.slots.Count)
+            {
+                // Show button and update text
+                productionSlotButtons[i].style.display = DisplayStyle.Flex;
+
+                if (building.slots[i].recipe != null)
+                {
+                    // Show the recipe name if a recipe is assigned
+                    productionSlotButtons[i].text = $"Currently producing: {building.slots[i].recipe.itemName}";
+                }
+                else
+                {
+                    // Show "Empty" or "Select Recipe" if no recipe assigned
+                    productionSlotButtons[i].text = "Select Production";
+                }
+            }
+            else
+            {
+                // Hide button if slot doesn't exist yet
+                productionSlotButtons[i].style.display = DisplayStyle.None;
+            }
+        }
     }
 
     protected override void UpdateDisplay()
@@ -106,7 +140,7 @@ public class MainBuildingUI : BuildingUI
         MainBuilding mainBuilding = currentBuilding as MainBuilding;
         if (mainBuilding == null) return;
 
-        // UpdateSlots(mainBuilding);
+        UpdateProductionSlots(mainBuilding);
         // UpdateBuySlotButton(mainBuilding);
     }
 
@@ -117,8 +151,9 @@ public class MainBuildingUI : BuildingUI
         MainBuilding mainBuilding = currentBuilding as MainBuilding;
         List<ProductionRecipe> recipes = mainBuilding.GetAvailableRecipes();
 
-
         mainBuilding.SetRecipe(currentSlotIndex, recipes[recipeSlot]);
-        
+        UpdateDisplay();
+        HideProductionList();
+
     }
 }

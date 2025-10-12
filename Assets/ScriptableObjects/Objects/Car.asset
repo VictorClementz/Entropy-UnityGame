@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8621c11472782e40a1c5852d43fb3ad, type: 3}
   m_Name: Car
   m_EditorClassIdentifier: Assembly-CSharp::ProductionRecipe
-  itemName: 
+  itemName: Car
   costs: []
   goldValue: 0
   productionTime: 0

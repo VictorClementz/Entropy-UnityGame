@@ -9,31 +9,36 @@
             <ui:Label name="OilLabel" text="Oil: 0" class="toplabel resource-label" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="Sides" style="flex-grow: 1; position: relative; flex-direction: row;">
-        <ui:VisualElement name="SidebarLeft" class="sidebar sidebar-left">
+    <ui:VisualElement name="Sides" style="flex-grow: 1; position: relative; flex-direction: row; background-size: 100% 76%;">
+        <ui:VisualElement name="SidebarLeft" class="sidebar sidebar-left" style="flex-wrap: wrap; justify-content: flex-start; align-self: auto; align-content: flex-start; align-items: stretch; margin-top: 80px;">
             <ui:Label text="BUILD" name="Label" class="header sidebar-title" />
-            <ui:Button text="Main Building" name="MainButton" class="button building-button" />
-            <ui:Button text="Resource Building" name="ResButton" class="button building-button" />
+            <ui:VisualElement name="BuildContainer" style="flex-grow: 1; flex-direction: row; height: 0;">
+                <ui:Button text="Main Building" name="MainButton" class="button building-button" style="white-space: normal;" />
+                <ui:Button text="Resource Building" name="ResButton" class="button building-button" style="white-space: normal;" />
+            </ui:VisualElement>
+            <ui:Label text="OTHER STUFF" name="Label" class="header sidebar-title" />
+            <ui:VisualElement style="flex-grow: 1;" />
         </ui:VisualElement>
         <ui:VisualElement name="GameArea" style="flex-grow: 1; flex-direction: column; align-self: flex-start; height: auto; width: 850px;" />
-        <ui:VisualElement name="SidebarRight" class="sidebar sidebar-right">
+        <ui:VisualElement name="SidebarRight" class="sidebar sidebar-right" style="margin-top: 80px;">
             <ui:Label text="SELECTED" name="Label" class="header sidebar-title" />
             <ui:VisualElement name="MainBuildingPanel" class="popup-panel" style="position: absolute; right: 4px; top: 248px; width: 420px; display: flex; align-self: center;">
                 <ui:Label text="COMMAND CENTER" style="font-size: 22px; color: rgb(0, 200, 255); margin-bottom: 20px; -unity-text-align: upper-center; -unity-font-style: bold;" />
                 <ui:VisualElement name="SlotsContainer" style="flex-direction: row; flex-wrap: wrap; margin-bottom: 20px; justify-content: space-around;">
-                    <ui:Button text="Button" name="ProdSlot1" class="button" />
-                    <ui:Button text="Button" name="ProdSlot2" class="button" />
+                    <ui:Button text="Select Production" name="ProdSlot1" class="button" style="white-space: normal;" />
+                    <ui:Button text="Select Production" name="ProdSlot2" class="button" style="flex-wrap: nowrap; white-space: normal;" />
+                    <ui:Button text="Select Production" name="ProdSlot3" class="button" style="white-space: normal;" />
                 </ui:VisualElement>
-                <ui:VisualElement style="border-top-width: 2px; border-color: rgb(50, 150, 200); padding-top: 15px; margin-top: 15px;">
+                <ui:VisualElement style="border-top-width: 2px; border-color: rgb(50, 150, 200); padding-top: 15px; margin-top: 15px; display: flex;">
                     <ui:Label name="SlotCostLabel" text="Cost: 50 Credits" style="font-size: 16px; margin-bottom: 10px; color: rgb(200, 200, 200);" />
                     <ui:Button name="BuySlotButton" text="PURCHASE SLOT" class="action-button primary-button" style="height: 40px; font-size: 16px; border-radius: 3px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="RecipeSelectionPanel" class="sidebar-right" style="position: absolute; left: 0; top: -224px; width: 100%; height: 1008px; background-color: rgba(15, 20, 35, 0.98); padding: 20px; border-radius: 5px; display: flex;">
-                    <ui:Label text="Select Recipe" name="Label" emoji-fallback-support="false" class="header sidebar-title" />
+                <ui:VisualElement name="RecipeSelectionPanel" class="sidebar-right" style="position: absolute; left: 0; top: -224px; width: 100%; height: 946px; background-color: rgba(15, 20, 35, 0.98); padding: 20px; border-radius: 5px; display: none; opacity: 1;">
+                    <ui:Label text="SELECT PRODUCTION" name="Label" emoji-fallback-support="false" display-tooltip-when-elided="true" class="header sidebar-title" style="display: flex;" />
                     <ui:VisualElement name="RecipeButtonsContainer" style="flex-direction: row; flex-grow: 1; width: 385px; align-items: flex-start; justify-content: center; align-self: auto; align-content: flex-start; flex-wrap: wrap; display: flex;">
-                        <ui:Button text="Button" name="RecipeButton1" class="button" />
-                        <ui:Button text="Button" name="RecipeButton2" class="button" />
-                        <ui:Button text="Button" name="RecipeButton3" class="button" />
+                        <ui:Button text="Wrench" name="RecipeButton1" class="button" />
+                        <ui:Button text="Plank" name="RecipeButton2" class="button" />
+                        <ui:Button text="Car" name="RecipeButton3" class="button" />
                         <ui:Button text="Button" name="RecipeButton4" class="button" />
                     </ui:VisualElement>
                     <ui:Button name="CancelRecipeBtn" text="Cancel" style="width: 100%; height: 40px; background-color: rgb(120, 80, 80); margin-top: 20px;" />
