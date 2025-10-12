@@ -7,6 +7,7 @@ public class MainBuildingUI : BuildingUI
     private Button addSlotButton;
     private Button prodSlot1;
     private Button prodSlot2;
+    private Button prodSlot3;
     private VisualElement productionSelectionPanel;
     private Button confirmRecipeBtn;
     private Button cancelRecipeBtn;
@@ -32,6 +33,7 @@ public class MainBuildingUI : BuildingUI
         addSlotButton = uiDocument.rootVisualElement.Q<Button>("BuySlotButton");
         prodSlot1 = uiDocument.rootVisualElement.Q<Button>("ProdSlot1");
         prodSlot2 = uiDocument.rootVisualElement.Q<Button>("ProdSlot2");
+        prodSlot3 = uiDocument.rootVisualElement.Q<Button>("ProdSlot3");
 
         recipeButton1 = uiDocument.rootVisualElement.Q<Button>("RecipeButton1");
         recipeButton2 = uiDocument.rootVisualElement.Q<Button>("RecipeButton2");
@@ -43,8 +45,9 @@ public class MainBuildingUI : BuildingUI
 
 
         
-            prodSlot1.RegisterCallback<ClickEvent>(evt => OnProdSlotClicked(0));
+        prodSlot1.RegisterCallback<ClickEvent>(evt => OnProdSlotClicked(0));
         prodSlot2.RegisterCallback<ClickEvent>(evt => OnProdSlotClicked(1));
+        prodSlot3.RegisterCallback<ClickEvent>(evt => OnProdSlotClicked(2));
 
         recipeButton1.RegisterCallback<ClickEvent>(evt => AddRecipeToProd(0));
         recipeButton2.RegisterCallback<ClickEvent>(evt => AddRecipeToProd(1));
@@ -52,6 +55,7 @@ public class MainBuildingUI : BuildingUI
 
         productionSlotButtons.Add(prodSlot1);
         productionSlotButtons.Add(prodSlot2);
+        productionSlotButtons.Add(prodSlot3);
 
         productionSelectionPanel = uiDocument.rootVisualElement.Q("RecipeSelectionPanel");
 
@@ -60,8 +64,10 @@ public class MainBuildingUI : BuildingUI
 
         cancelRecipeBtn.RegisterCallback<ClickEvent>(evt => HideProductionList());
 
-
+       
     }
+
+
 
     public override void ShowPanel(Building building)
     {
@@ -70,6 +76,26 @@ public class MainBuildingUI : BuildingUI
 
 
         UpdateProductionSlots(mainBuilding);
+
+        UpdatePanelTitle(building);
+    }
+
+    private void UpdatePanelTitle(Building building)
+    {
+        // Find the title label (adjust the name if different in your UXML)
+        Label titleLabel = uiDocument.rootVisualElement.Q<Label>("BuildingTitleLabel");
+
+        if (titleLabel != null)
+        {
+            if (building is Outpost)
+            {
+                titleLabel.text = "OUTPOST";
+            }
+            else if (building is MainBuilding)
+            {
+                titleLabel.text = "COMMAND CENTER";
+            }
+        }
     }
 
     private void CallPlaceAddSlot(ClickEvent evt)
@@ -124,7 +150,7 @@ public class MainBuildingUI : BuildingUI
                 else
                 {
                     // Show "Empty" or "Select Recipe" if no recipe assigned
-                    productionSlotButtons[i].text = "Select Production";
+                    productionSlotButtons[i].text = "Select ProductionText";
                 }
             }
             else

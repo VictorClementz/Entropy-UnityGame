@@ -8,7 +8,7 @@ public class MenuScript : MonoBehaviour
     private UIDocument uiDocument;
 
     private Button resButton;
-    private Button mainButton;
+    private Button outpostButton;
 
     private Label goldLabel;
     private Label woodLabel;
@@ -25,9 +25,12 @@ public class MenuScript : MonoBehaviour
         root.pickingMode = PickingMode.Ignore;
 
         resButton = uiDocument.rootVisualElement.Q("ResButton") as Button;
-        resButton.RegisterCallback<ClickEvent>(CallPlaceBuilding);
-//topbar
-        
+        resButton.RegisterCallback<ClickEvent>(evt => CallPlaceBuilding(0));
+
+        outpostButton = uiDocument.rootVisualElement.Q("OutpostButton") as Button;
+        outpostButton.RegisterCallback<ClickEvent>(evt => CallPlaceBuilding(1));
+        //topbar
+
 
         goldLabel = root.Q<Label>("GoldLabel");
         woodLabel = root.Q<Label>("WoodLabel");
@@ -36,10 +39,10 @@ public class MenuScript : MonoBehaviour
         oilLabel = root.Q<Label>("OilLabel");
     }
    
-    private void CallPlaceBuilding(ClickEvent evt)
+    private void CallPlaceBuilding(int buildingIndex)
     {
       //  resButton.UnregisterCallback<ClickEvent>(CallPlaceBuilding);
-        buildingPlacer.PlaceBuilding(0); //Places resources for now
+        buildingPlacer.PlaceBuilding(buildingIndex); 
         Debug.Log("Place buidling");
     }
 

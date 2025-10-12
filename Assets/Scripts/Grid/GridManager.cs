@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Material oilMaterial;
     [SerializeField] private Material noneMaterial;
 
+    private List<InfluenceZone> activeInfluenceZones = new List<InfluenceZone>();
     private GridCell2[,] grid;
     private GameObject[,] tileVisuals;
     private Camera playerCamera;
@@ -322,5 +324,36 @@ public class GridManager : MonoBehaviour
         return !grid[x, y].isOccupied;
 
     }
+
+  
+    public void RegisterInfluenceZone(InfluenceZone zone)
+    {
+        if (!activeInfluenceZones.Contains(zone))
+        {
+            activeInfluenceZones.Add(zone);
+        }
+    }
+
+    // Call this when a building is destroyed
+    public void UnregisterInfluenceZone(InfluenceZone zone)
+    {
+        activeInfluenceZones.Remove(zone);
+    }
+
+    public bool IsPositionInAnyInfluence(int x, int y)
+    {
+        foreach (InfluenceZone zone in activeInfluenceZones)
+        {
+            if (zone.IsPositionInZone(x, y))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+   
+
 }
 

@@ -13,7 +13,7 @@
         <ui:VisualElement name="SidebarLeft" class="sidebar sidebar-left" style="flex-wrap: wrap; justify-content: flex-start; align-self: auto; align-content: flex-start; align-items: stretch; margin-top: 80px;">
             <ui:Label text="BUILD" name="Label" class="header sidebar-title" />
             <ui:VisualElement name="BuildContainer" style="flex-grow: 1; flex-direction: row; height: 0;">
-                <ui:Button text="Main Building" name="MainButton" class="button building-button" style="white-space: normal;" />
+                <ui:Button text="Outpost" name="OutpostButton" class="button building-button" style="white-space: normal;" />
                 <ui:Button text="Resource Building" name="ResButton" class="button building-button" style="white-space: normal;" />
             </ui:VisualElement>
             <ui:Label text="OTHER STUFF" name="Label" class="header sidebar-title" />
@@ -21,13 +21,13 @@
         </ui:VisualElement>
         <ui:VisualElement name="GameArea" style="flex-grow: 1; flex-direction: column; align-self: flex-start; height: auto; width: 850px;" />
         <ui:VisualElement name="SidebarRight" class="sidebar sidebar-right" style="margin-top: 80px;">
-            <ui:Label text="SELECTED" name="Label" class="header sidebar-title" />
+            <ui:Label text="SELECTED" name="BuildingTitleLabel" class="header sidebar-title" />
             <ui:VisualElement name="MainBuildingPanel" class="popup-panel" style="position: absolute; right: 4px; top: 248px; width: 420px; display: flex; align-self: center;">
                 <ui:Label text="COMMAND CENTER" style="font-size: 22px; color: rgb(0, 200, 255); margin-bottom: 20px; -unity-text-align: upper-center; -unity-font-style: bold;" />
                 <ui:VisualElement name="SlotsContainer" style="flex-direction: row; flex-wrap: wrap; margin-bottom: 20px; justify-content: space-around;">
-                    <ui:Button text="Select Production" name="ProdSlot1" class="button" style="white-space: normal;" />
-                    <ui:Button text="Select Production" name="ProdSlot2" class="button" style="flex-wrap: nowrap; white-space: normal;" />
-                    <ui:Button text="Select Production" name="ProdSlot3" class="button" style="white-space: normal;" />
+                    <ui:Button text="Select Production1" name="ProdSlot1" class="button" style="white-space: normal;" />
+                    <ui:Button text="Select Production2" name="ProdSlot2" class="button" style="flex-wrap: nowrap; white-space: normal;" />
+                    <ui:Button text="Select Production3" name="ProdSlot3" class="button" style="white-space: normal;" />
                 </ui:VisualElement>
                 <ui:VisualElement style="border-top-width: 2px; border-color: rgb(50, 150, 200); padding-top: 15px; margin-top: 15px; display: flex;">
                     <ui:Label name="SlotCostLabel" text="Cost: 50 Credits" style="font-size: 16px; margin-bottom: 10px; color: rgb(200, 200, 200);" />

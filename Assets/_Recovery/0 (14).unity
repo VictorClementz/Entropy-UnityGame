@@ -4448,117 +4448,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245764179}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &253941109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 253941113}
-  - component: {fileID: 253941112}
-  - component: {fileID: 253941111}
-  - component: {fileID: 253941110}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &253941110
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253941109}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &253941111
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253941109}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 4624f9907e2ecf741820a240bc45b0ec, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &253941112
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253941109}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &253941113
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253941109}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 2, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254292746
 GameObject:
   m_ObjectHideFlags: 0
@@ -8582,6 +8471,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446878255}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &471650179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 816607629550920098, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
+  m_PrefabInstance: {fileID: 1189075226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &471650185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471650179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1864ddbbfea48459a21706dd359c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InfluenceZone
+  radius: 3
 --- !u!1 &487975562
 GameObject:
   m_ObjectHideFlags: 0
@@ -16886,6 +16793,7 @@ GameObject:
   - component: {fileID: 1128929616}
   - component: {fileID: 1128929615}
   - component: {fileID: 1128929617}
+  - component: {fileID: 1128929618}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -16964,6 +16872,7 @@ MonoBehaviour:
   gridManager: {fileID: 1128929611}
   buildingPrefabs:
   - {fileID: 6473654685905704015, guid: 45d8654ee2c1cf1408c35d41821c19ac, type: 3}
+  - {fileID: 5917494699154624686, guid: 9e89eca97fc7f7c4da765e2f885eca7e, type: 3}
 --- !u!114 &1128929616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16992,6 +16901,19 @@ MonoBehaviour:
   corruptionTickInterval: 3
   corruptionSpeedMultiplier: 1.1
   spreadChance: 0.05
+--- !u!114 &1128929618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128929610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc6bc03cf920224db05c5d8950d1eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InfluenceBorderManager
+  borderColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1137119264
 GameObject:
   m_ObjectHideFlags: 0
@@ -17600,6 +17522,14 @@ PrefabInstance:
       value: MainBuildingPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 7037800852380150555, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
+      propertyPath: influenceRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037800852380150555, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
+      propertyPath: productionSlots
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037800852380150555, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
       propertyPath: availableRecipes.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -17614,7 +17544,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 816607629550920098, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 471650185}
   m_SourcePrefab: {fileID: 100100000, guid: 537cc1cc9b8658348b1a2a919452c000, type: 3}
 --- !u!1 &1203170819
 GameObject:
@@ -29612,7 +29545,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1128929613}
-  - {fileID: 253941113}
   - {fileID: 1189075226}
   - {fileID: 409191530}
   - {fileID: 778240587}

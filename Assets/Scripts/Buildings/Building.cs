@@ -43,23 +43,25 @@ public abstract class Building : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-           
 
+                Debug.Log("cast");
                 if (hit.collider.gameObject == this.gameObject)
                 {
+                    Debug.Log("hit");
                     OnBuildingClicked();
                 }
             }
         }
     }
-
+    
     void OnBuildingClicked()
     {
-       
 
+        
         if (BuildingUIManager.Instance != null)
         {
             BuildingUIManager.Instance.ShowBuildingUI(this);
+            
         }
         else
         {

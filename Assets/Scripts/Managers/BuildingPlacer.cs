@@ -25,6 +25,12 @@ public class BuildingPlacer : MonoBehaviour
         {
             return;
         }
+
+        if (!CanPlaceBuilding(selectedTile.x, selectedTile.y))
+        {
+            Debug.Log("Invalid placement"); //Popup?
+            return;
+        }
         ResourceManager.Instance.SpendGold(buildingComponent.cost); //spend gokld
 
         Vector3 worldPos = new Vector3(selectedTile.x, 0.5f, selectedTile.y);
@@ -32,4 +38,20 @@ public class BuildingPlacer : MonoBehaviour
         GameObject building = Instantiate(buildingPrefabs[selectedBuildingIndex], worldPos, Quaternion.identity);; //spawn building
         gridManager.SetTileOccupied(selectedTile.x, selectedTile.y, building); //Update cell
     }
+
+    public bool CanPlaceBuilding(int x, int y)
+    {
+        if (!GridManager.Instance.ValidPlacement(x, y))
+            return false;
+
+        // NEW - Check if position is in influence zone
+        if (!GridManager.Instance.IsPositionInAnyInfluence(x, y))
+        {
+            Debug.Log("Cannot place building outside influence zone!");
+            return false;
+        }
+
+        return true;
+    }
+
 }
