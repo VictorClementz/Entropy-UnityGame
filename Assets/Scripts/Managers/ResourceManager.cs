@@ -49,7 +49,7 @@ public class ResourceManager : MonoBehaviour
                 break;
         }
         OnResourceChanged?.Invoke(type, GetResource(type));
-        Debug.Log($"Added {amount} {type}. Total: {GetResource(type)}");
+       
     }
 
     public int GetResource(ResourceType type)

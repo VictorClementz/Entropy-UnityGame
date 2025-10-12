@@ -25,10 +25,10 @@ public class MainBuilding : Building
         }
 
         // For testing - auto-start first slot
-        if (availableRecipes.Count > 0)
-        {
-            SetRecipe(0, availableRecipes[0]);
-        }
+        //if (availableRecipes.Count > 0)
+        //{
+         //   SetRecipe(0, availableRecipes[0]);
+       // }
     }
 
     
@@ -110,5 +110,15 @@ public class MainBuilding : Building
         return true;
     }
 
-  
+    public int GetSlotCount()
+    {
+        return slots.Count;
+    }
+
+    public List<ProductionRecipe> GetAvailableRecipes()
+    {
+        return availableRecipes;
+    }
+
+
 }
