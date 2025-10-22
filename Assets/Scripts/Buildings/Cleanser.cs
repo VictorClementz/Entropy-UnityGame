@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Cleanser : Building
 {
@@ -7,30 +8,33 @@ public class Cleanser : Building
     [SerializeField] private float cleanseRate = 0.2f; 
     [SerializeField] private CleanseMode currentMode = CleanseMode.Focused;
 
-    private GridManager gridManager;
+    //private GridManager gridManager;
     private Vector2Int currentPosition;
     private bool isActive = true;
 
     public enum CleanseMode
     {
-        Focused,  //Single tile
-        Area      //3x3 around cleanser
+        Focused,  
+        Area     
     }
 
     protected override void Awake()
     {
         base.Awake();
+        Debug.Log("Cleanser Awake called");
         gridManager = GridManager.Instance;
     }
 
     void Start()
     {
         
-       
+
+
     }
 
     void Update()
     {
+        base.Update();
 
         currentPosition = new Vector2Int(
            Mathf.RoundToInt(transform.position.x),

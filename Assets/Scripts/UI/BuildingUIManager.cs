@@ -5,8 +5,10 @@ public class BuildingUIManager : MonoBehaviour
     public static BuildingUIManager Instance;
 
     [SerializeField] private MainBuildingUI mainBuildingUI;
-   // [SerializeField] private ResourceBuildingUI resourceBuildingUI;
-    // Add more as needed
+    [SerializeField] private CleanserUI cleanserUI;
+
+    // [SerializeField] private ResourceBuildingUI resourceBuildingUI;
+    
 
     private BuildingUI currentOpenUI;
 
@@ -20,17 +22,24 @@ public class BuildingUIManager : MonoBehaviour
         // Close any open UI first
         HideCurrentUI();
 
-        // Show correct UI based on building type
-        if (building is MainBuilding mainBuilding)
+        if (building is Cleanser) // Add this
+        {
+            cleanserUI.ShowPanel(building);
+            currentOpenUI = cleanserUI;
+            Debug.Log("1");
+            
+        }
+        else if (building is MainBuilding mainBuilding)
         {
             mainBuildingUI.ShowPanel(mainBuilding);
             currentOpenUI = mainBuildingUI;
         }
+       
         //else if (building is ResourceBuilding resBuilding)
         //{
-       //     resourceBuildingUI.ShowPanel(resBuilding);
+        //     resourceBuildingUI.ShowPanel(resBuilding);
         //    currentOpenUI = resourceBuildingUI;
-      //  }
+        //  }
     }
 
     public void HideCurrentUI()

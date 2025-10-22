@@ -9,8 +9,8 @@ public abstract class Building : MonoBehaviour
 
     protected GridManager gridManager;
     [SerializeField] public int cost;
-    private Mouse mouse;
-    private Camera mainCamera;
+    public Mouse mouse;
+    public Camera mainCamera;
 
 
     protected virtual void Awake()
@@ -33,7 +33,7 @@ public abstract class Building : MonoBehaviour
  
     }
 
-    void Update()
+   public void Update()
     {
         
         if (mouse != null && mouse.leftButton.wasPressedThisFrame)
@@ -55,9 +55,7 @@ public abstract class Building : MonoBehaviour
     }
     
     void OnBuildingClicked()
-    {
-
-        
+    {  
         if (BuildingUIManager.Instance != null)
         {
             BuildingUIManager.Instance.ShowBuildingUI(this);
