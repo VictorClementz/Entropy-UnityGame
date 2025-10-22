@@ -82,7 +82,7 @@ public class MainBuildingUI : BuildingUI
 
     private void UpdatePanelTitle(Building building)
     {
-        // Find the title label (adjust the name if different in your UXML)
+        
         Label titleLabel = uiDocument.rootVisualElement.Q<Label>("BuildingTitleLabel");
 
         if (titleLabel != null)
@@ -139,23 +139,23 @@ public class MainBuildingUI : BuildingUI
         {
             if (i < building.slots.Count)
             {
-                // Show button and update text
+                
                 productionSlotButtons[i].style.display = DisplayStyle.Flex;
 
                 if (building.slots[i].recipe != null)
                 {
-                    // Show the recipe name if a recipe is assigned
+                    
                     productionSlotButtons[i].text = $"Currently producing: {building.slots[i].recipe.itemName}";
                 }
                 else
                 {
-                    // Show "Empty" or "Select Recipe" if no recipe assigned
+                    
                     productionSlotButtons[i].text = "Select ProductionText";
                 }
             }
             else
             {
-                // Hide button if slot doesn't exist yet
+               
                 productionSlotButtons[i].style.display = DisplayStyle.None;
             }
         }

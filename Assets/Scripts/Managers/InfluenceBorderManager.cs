@@ -25,20 +25,20 @@ public class InfluenceBorderManager : MonoBehaviour
 
         lineRenderer = borderObject.AddComponent<LineRenderer>();
 
-        // Make it visible
+        //Make it visible
         lineRenderer.startWidth = 0.12f;
         lineRenderer.endWidth = 0.12f;
         lineRenderer.useWorldSpace = true;
 
-        // Use Legacy Diffuse shader
+      
         lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Diffuse"));
         lineRenderer.material.color = borderColor;
 
-        // Force colors
+        //colors
         lineRenderer.startColor = borderColor;
         lineRenderer.endColor = borderColor;
 
-        // Rendering settings
+        
         lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         lineRenderer.receiveShadows = false;
         lineRenderer.sortingOrder = 100;
@@ -50,7 +50,7 @@ public class InfluenceBorderManager : MonoBehaviour
 
     public void RefreshBorder()
     {
-        // Get all cells influenced by any zone
+        //Get all cells influenced by any zone
         HashSet<Vector2Int> allInfluencedCells = new HashSet<Vector2Int>();
         InfluenceZone[] zones = FindObjectsByType<InfluenceZone>(FindObjectsSortMode.None);
 
@@ -63,7 +63,7 @@ public class InfluenceBorderManager : MonoBehaviour
             }
         }
 
-        // Calculate and draw the perimeter
+        //Calculate and draw the perimeter
         if (allInfluencedCells.Count > 0)
         {
             List<Vector3> perimeterPoints = CalculatePerimeter(allInfluencedCells);
@@ -80,10 +80,10 @@ public class InfluenceBorderManager : MonoBehaviour
     {
         List<Edge> edges = new List<Edge>();
 
-        // Find all outer edges
+        //Find all outer edges
         foreach (Vector2Int cell in cells)
         {
-            // Check each of 4 sides - if neighbor is not in set, it's an outer edge
+            // Check each of 4 sides if neighbor is not in set, it's an outer edge
             if (!cells.Contains(new Vector2Int(cell.x - 1, cell.y)))
                 edges.Add(new Edge(cell.x - 0.5f, cell.y - 0.5f, cell.x - 0.5f, cell.y + 0.5f));
 
@@ -97,7 +97,7 @@ public class InfluenceBorderManager : MonoBehaviour
                 edges.Add(new Edge(cell.x - 0.5f, cell.y + 0.5f, cell.x + 0.5f, cell.y + 0.5f));
         }
 
-        // Order edges into a continuous line
+        //Order edges into a continuous line
         return OrderEdges(edges);
     }
 
@@ -109,7 +109,7 @@ public class InfluenceBorderManager : MonoBehaviour
         Edge current = edges[0];
         edges.RemoveAt(0);
 
-        // Changed Y from 0.1f to 0.6f to be above tiles
+        
         points.Add(new Vector3(current.x1, 0.6f, current.y1));
         Vector2 currentEnd = new Vector2(current.x2, current.y2);
 
@@ -144,7 +144,7 @@ public class InfluenceBorderManager : MonoBehaviour
             if (!found) break;
         }
 
-        // Close the loop
+        //Close the loop
         if (points.Count > 0)
             points.Add(points[0]);
 

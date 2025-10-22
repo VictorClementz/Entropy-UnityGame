@@ -18,7 +18,7 @@ public class InfluenceZone : MonoBehaviour
 
     void OnDestroy()
     {
-        // Unregister this zone
+        
         if (GridManager.Instance != null)
         {
             GridManager.Instance.UnregisterInfluenceZone(this);

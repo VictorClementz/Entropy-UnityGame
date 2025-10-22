@@ -9,6 +9,7 @@ public class CorruptionManager : MonoBehaviour
     [Header("Corruption Settings")]
     [SerializeField] private float corruptionTickInterval = 3f;
     [SerializeField] private float corruptionSpeedMultiplier = 1.1f; //Speed of global spread
+    [SerializeField] private float corruptionGrowthRate = 0.1f;
     [SerializeField]
     [Range(0f, 1f)]
     private float spreadChance = 0.7f; //Start at 70% spread chance
@@ -18,6 +19,8 @@ public class CorruptionManager : MonoBehaviour
     private float gameTime;
 
     private List<(int x, int y)> corruptedCells;
+
+
 
     void Awake()
     {
@@ -42,6 +45,7 @@ public class CorruptionManager : MonoBehaviour
         {
             tickTimer = 0f;
             SpreadCorruption();
+            GrowCorruption();
         }
     }
     //ramps upp corruption
@@ -53,6 +57,7 @@ public class CorruptionManager : MonoBehaviour
 
     void SpawnInitialCorruption()
     {
+       
         int gridWidth = gridManager.gridWidth;
         int gridHeight = gridManager.gridHeight;
 
@@ -73,17 +78,20 @@ public class CorruptionManager : MonoBehaviour
         }
 
         var startCell = edgeCells[Random.Range(0, edgeCells.Count)];
+        
         CorruptCell(startCell.x, startCell.y);
     }
 
     void SpreadCorruption()
     {
-        
+       
         //Precaution
         List<(int x, int y)> cellsToSpreadFrom = new List<(int x, int y)>(corruptedCells);
 
         foreach (var cell in cellsToSpreadFrom)
         {
+            float effectiveSpreadChance = GetEffectiveSpreadChance(cell.x, cell.y); //Different spread depending on condiotn (rn only influence zone)
+
             if (Random.value > spreadChance) continue;
 
             List<(int x, int y)> neighbors = GetNeighbors(cell.x, cell.y);
@@ -114,7 +122,7 @@ public class CorruptionManager : MonoBehaviour
             
         //corrupt cell and add to list
         cell.isCorrupted = true;
-        cell.corruptionLevel = 1f;
+        cell.corruptionLevel = 0.0f;
         corruptedCells.Add((x, y));
 
         gridManager.UpdateTileVisual(x, y);
@@ -126,6 +134,45 @@ public class CorruptionManager : MonoBehaviour
         }
 
        
+    }
+
+    void GrowCorruption()
+    {
+        List<(int x, int y)> cellsToGrow = new List<(int x, int y)>(corruptedCells);
+
+        foreach (var cellPos in cellsToGrow)
+        {
+            GridCell2 cell = gridManager.GetCell(cellPos.x, cellPos.y);
+            if (cell == null || !cell.isCorrupted) continue;
+
+            // Increase corruption level
+            cell.corruptionLevel += corruptionGrowthRate * Time.deltaTime;
+
+            // Check thresholds for visual updates or destruction
+            if (cell.corruptionLevel >= 1.0f && cell.building != null)
+            {
+                // Stage 3 equivalent - destroy buildings
+                if (cell.building.GetComponent<Outpost>() != null)
+                {
+                    Debug.Log($"Outpost at ({cellPos.x}, {cellPos.y}) destroyed by corruption!");
+                    Destroy(cell.building);
+                    cell.building = null;
+                    cell.isOccupied = false;
+                }
+                else if (cell.building.GetComponent<MainBuilding>() != null)
+                {
+                    GameOver();
+                }
+            }
+
+            // Update visuals (call periodically, not every frame)
+            // Could add a small timer here to reduce calls
+        }
+    }
+    //remove corruption comp
+    public void RemoveCorruptedCell(int x, int y)
+    {
+        corruptedCells.Remove((x, y));
     }
 
     List<(int x, int y)> GetNeighbors(int x, int y)
@@ -153,6 +200,18 @@ public class CorruptionManager : MonoBehaviour
 
         return neighbors;
     }
+
+    float GetEffectiveSpreadChance(int x, int y)
+    {
+        
+        if (GridManager.Instance.IsPositionInAnyInfluence(x, y)) //slow spread in influece zone
+        {
+            return spreadChance * 0.5f; 
+        }
+
+        return spreadChance; 
+    }
+
     //Testing
     void GameOver()
     {

@@ -12,9 +12,10 @@
     <ui:VisualElement name="Sides" style="flex-grow: 1; position: relative; flex-direction: row; background-size: 100% 76%;">
         <ui:VisualElement name="SidebarLeft" class="sidebar sidebar-left" style="flex-wrap: wrap; justify-content: flex-start; align-self: auto; align-content: flex-start; align-items: stretch; margin-top: 80px;">
             <ui:Label text="BUILD" name="Label" class="header sidebar-title" />
-            <ui:VisualElement name="BuildContainer" style="flex-grow: 1; flex-direction: row; height: 0;">
+            <ui:VisualElement name="BuildContainer" style="flex-grow: 1; flex-direction: row; height: 0; margin-right: 0; margin-left: -15px;">
                 <ui:Button text="Outpost" name="OutpostButton" class="button building-button" style="white-space: normal;" />
                 <ui:Button text="Resource Building" name="ResButton" class="button building-button" style="white-space: normal;" />
+                <ui:Button text="Resource Building" name="CleanserButton" class="button building-button" style="white-space: normal;" />
             </ui:VisualElement>
             <ui:Label text="OTHER STUFF" name="Label" class="header sidebar-title" />
             <ui:VisualElement style="flex-grow: 1;" />

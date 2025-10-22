@@ -9,6 +9,7 @@ public class MenuScript : MonoBehaviour
 
     private Button resButton;
     private Button outpostButton;
+    private Button cleanserButton;
 
     private Label goldLabel;
     private Label woodLabel;
@@ -29,6 +30,9 @@ public class MenuScript : MonoBehaviour
 
         outpostButton = uiDocument.rootVisualElement.Q("OutpostButton") as Button;
         outpostButton.RegisterCallback<ClickEvent>(evt => CallPlaceBuilding(1));
+
+        cleanserButton = uiDocument.rootVisualElement.Q("CleanserButton") as Button;
+        cleanserButton.RegisterCallback<ClickEvent>(evt => CallPlaceBuilding(2));
         //topbar
 
 

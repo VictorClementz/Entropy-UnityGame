@@ -44,10 +44,10 @@ public class BuildingPlacer : MonoBehaviour
         if (!GridManager.Instance.ValidPlacement(x, y))
             return false;
 
-        // NEW - Check if position is in influence zone
+        //Check if position is in influence zone
         if (!GridManager.Instance.IsPositionInAnyInfluence(x, y))
         {
-            Debug.Log("Cannot place building outside influence zone!");
+            Debug.Log("Cannot place building outside influence zone");
             return false;
         }
 
