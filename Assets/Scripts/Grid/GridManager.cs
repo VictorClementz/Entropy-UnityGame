@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,9 +28,13 @@ public class GridManager : MonoBehaviour
     private GameObject[,] tileVisuals;
     private Camera playerCamera;
 
+    public GameObject testgrid;
     
     private Mouse mouse;
     private Keyboard keyboard;
+
+    Color stage1Color = new Color(0.3f, 0.2f, 0.4f);
+    Color stage3Color = new Color(0.1f, 0.0f, 0.2f); 
 
     // Selection state, -1 when no selection
     private Vector2Int selectedTile = new Vector2Int(-1, -1); 
@@ -40,7 +44,7 @@ public class GridManager : MonoBehaviour
         Instance = this;
         CreateGrid();
         CreateVisuals();
-
+        testgrid.SetActive(false);
     }
     void Start()
     {
@@ -265,8 +269,16 @@ public class GridManager : MonoBehaviour
         }
         else if (GetCell(x, y).isCorrupted)
         {
+            // Blend color instead of material change? revisits
             renderer.material = corruptedMaterial;
+            float t = GetCell(x, y).corruptionLevel;
+            Color lerpedColor = Color.Lerp(stage1Color, stage3Color, t);
+            renderer.material.color = lerpedColor;
         }
+        //else if (GetCell(x, y).isCorrupted)
+        // {
+        //     
+        //  }
         else
         {
             // Return to the base material for this cells resource type
