@@ -291,10 +291,12 @@ public class GridManager : MonoBehaviour
         return IsValidTile(coords.x, coords.y);
     }
 
-    bool IsValidTile(int x, int y)
+    public bool IsValidTile(int x, int y)
     {
         return x >= 0 && x < gridWidth && y >= 0 && y < gridHeight;
     }
+
+  
 
     // Acces to selected tile
     public Vector2Int GetSelectedTile()
@@ -365,7 +367,8 @@ public class GridManager : MonoBehaviour
         return false;
     }
 
-   
+  
+
 
 }
 

@@ -23,7 +23,7 @@
         <ui:VisualElement name="GameArea" style="flex-grow: 1; flex-direction: column; align-self: flex-start; height: auto; width: 850px;" />
         <ui:VisualElement name="SidebarRight" class="sidebar sidebar-right" style="margin-top: 80px;">
             <ui:Label text="SELECTED" name="BuildingTitleLabel" class="header sidebar-title" />
-            <ui:VisualElement name="MainBuildingPanel" class="popup-panel" style="position: absolute; right: 4px; top: 248px; width: 420px; display: flex; align-self: center;">
+            <ui:VisualElement name="MainBuildingPanel" enabled="true" class="popup-panel" style="position: absolute; right: 4px; top: 248px; width: 420px; display: flex; align-self: center;">
                 <ui:Label text="COMMAND CENTER" style="font-size: 22px; color: rgb(0, 200, 255); margin-bottom: 20px; -unity-text-align: upper-center; -unity-font-style: bold;" />
                 <ui:VisualElement name="SlotsContainer" style="flex-direction: row; flex-wrap: wrap; margin-bottom: 20px; justify-content: space-around;">
                     <ui:Button text="Select Production1" name="ProdSlot1" class="button" style="white-space: normal;" />
@@ -45,6 +45,21 @@
                     <ui:Button name="CancelRecipeBtn" text="Cancel" style="width: 100%; height: 40px; background-color: rgb(120, 80, 80); margin-top: 20px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:VisualElement name="CleanserPanel" class="popup-panel" style="position: absolute; right: 4%; top: 248px; width: 400px; display: none;">
+                <ui:Label text="CLEANSER" style="font-size: 22px; color: rgb(0, 200, 255); margin-bottom: 20px; -unity-text-align: upper-center; -unity-font-style: bold;" />
+                <ui:Label name="CleanserStatusLabel" text="Mode: Focused" style="font-size: 18px; color: rgb(220, 220, 220); margin-bottom: 20px; -unity-text-align: upper-center;" />
+                <ui:VisualElement style="margin-bottom: 30px;">
+                    <ui:Label text="CLEANSE MODE" style="font-size: 16px; color: rgb(200, 200, 200); margin-bottom: 15px; -unity-text-align: upper-center; -unity-font-style: bold;" />
+                    <ui:Button name="FocusedModeButton" text="FOCUSED MODE" class="action-button secondary-button" style="height: 50px; font-size: 16px; border-radius: 3px; margin-bottom: 10px;" />
+                    <ui:Label text="Fast cleanse on single tile" style="font-size: 13px; color: rgb(150, 150, 150); margin-bottom: 20px; -unity-text-align: upper-center; font-style: italic;" />
+                    <ui:Button name="AreaModeButton" text="AREA MODE" class="action-button secondary-button" style="height: 50px; font-size: 16px; border-radius: 3px; margin-bottom: 10px;" />
+                    <ui:Label text="Slower cleanse on 3x3 area" style="font-size: 13px; color: rgb(150, 150, 150); -unity-text-align: upper-center; font-style: italic;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="border-top-width: 2px; border-color: rgb(50, 150, 200); padding-top: 15px; margin-top: 15px;">
+                    <ui:Label text="Click a tile to set destination" style="font-size: 14px; color: rgb(200, 200, 200); -unity-text-align: upper-center; opacity: 0.7;" />
+                    <ui:Button name="setDestinationButton" text="SELECT DESTINATION" class="action-button secondary-button" style="height: 50px; font-size: 16px; border-radius: 3px; margin-bottom: 10px; display: flex;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="ResourceBuildingPanel" class="popup-panel" style="position: absolute; right: 30%; top: 120px; width: 400px; display: none;">
@@ -54,20 +69,6 @@
         <ui:VisualElement style="border-top-width: 2px; border-color: rgb(50, 150, 200); padding-top: 15px; margin-top: 15px;">
             <ui:Label name="UpgradeCostLabel" text="Next Upgrade: 100 Credits" style="font-size: 14px; margin-bottom: 10px; color: rgb(200, 200, 200);" />
             <ui:Button name="UpgradeButton" text="UPGRADE" class="action-button secondary-button" style="height: 40px; font-size: 16px; border-radius: 3px;" />
-        </ui:VisualElement>
-    </ui:VisualElement>
-    <ui:VisualElement name="CleanserPanel" class="popup-panel" style="position: absolute; right: 30%; top: 120px; width: 400px; display: none;">
-        <ui:Label text="CLEANSER" style="font-size: 22px; color: rgb(0, 200, 255); margin-bottom: 20px; -unity-text-align: upper-center; -unity-font-style: bold;" />
-        <ui:Label name="CleanserStatusLabel" text="Mode: Focused" style="font-size: 18px; color: rgb(220, 220, 220); margin-bottom: 20px; -unity-text-align: upper-center;" />
-        <ui:VisualElement style="margin-bottom: 30px;">
-            <ui:Label text="CLEANSE MODE" style="font-size: 16px; color: rgb(200, 200, 200); margin-bottom: 15px; -unity-text-align: upper-center; -unity-font-style: bold;" />
-            <ui:Button name="FocusedModeButton" text="FOCUSED MODE" class="action-button secondary-button" style="height: 50px; font-size: 16px; border-radius: 3px; margin-bottom: 10px;" />
-            <ui:Label text="Fast cleanse on single tile" style="font-size: 13px; color: rgb(150, 150, 150); margin-bottom: 20px; -unity-text-align: upper-center; font-style: italic;" />
-            <ui:Button name="AreaModeButton" text="AREA MODE" class="action-button secondary-button" style="height: 50px; font-size: 16px; border-radius: 3px; margin-bottom: 10px;" />
-            <ui:Label text="Slower cleanse on 3x3 area" style="font-size: 13px; color: rgb(150, 150, 150); -unity-text-align: upper-center; font-style: italic;" />
-        </ui:VisualElement>
-        <ui:VisualElement style="border-top-width: 2px; border-color: rgb(50, 150, 200); padding-top: 15px; margin-top: 15px;">
-            <ui:Label text="Click a tile to set destination" style="font-size: 14px; color: rgb(200, 200, 200); -unity-text-align: upper-center; opacity: 0.7;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
